@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 const App = () => {
   const ref = useRef<any>();
   const [input, setInput] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [code, setCode] = useState("");
 
   const startService = async () => {
@@ -17,12 +16,17 @@ const App = () => {
     startService();
   }, []);
 
-  const onClick = () => {
+  const onClick = async () => {
     if (!ref.current) {
       return;
     }
 
-    console.log(ref.current);
+    const result = await ref.current.transform(input, {
+      loader: "jsx",
+      target: "es2015",
+    });
+
+    setCode(result.code);
   };
 
   return (
