@@ -1,2 +1,2 @@
-# typescript-esbuild-app
+# React, Typescript, Esbuild app
 Sample React application using Esbuild and Typescript
